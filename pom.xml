@@ -20,15 +20,19 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<maven.compiler.encoding>UTF-8</maven.compiler.encoding>
-		<maven.compiler.source>1.7</maven.compiler.source>
-		<maven.compiler.target>1.7</maven.compiler.target>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
 		<maven.test.skip>true</maven.test.skip>
 
 		<xxl-rpc.version>1.4.1</xxl-rpc.version>
 
 		<spring.version>4.3.24.RELEASE</spring.version>
-		<spring-boot.version>1.5.21.RELEASE</spring-boot.version>
-		<mybatis-spring-boot-starter.version>1.3.4</mybatis-spring-boot-starter.version>
+		<spring-boot.version>2.1.6.RELEASE</spring-boot.version>
+		<spring-cloud.version>Greenwich.SR1</spring-cloud.version>
+		<spring-platform.version>Cairo-SR8</spring-platform.version>
+		<spring-boot-admin.version>2.1.5</spring-boot-admin.version>
+		<jackson.modules>2.9.9</jackson.modules>
+		<mybatis-spring-boot-starter.version>2.0.1</mybatis-spring-boot-starter.version>
 		<mysql-connector-java.version>5.1.47</mysql-connector-java.version>
 
 		<slf4j-api.version>1.7.26</slf4j-api.version>
@@ -43,7 +47,6 @@
 		<maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
 		<maven-war-plugin.version>3.2.2</maven-war-plugin.version>
 	</properties>
-
 	<build>
 		<plugins>
 		</plugins>
@@ -57,12 +60,12 @@
 		</license>
 	</licenses>
 
-	<scm>
-		<tag>master</tag>
-		<url>https://github.com/xuxueli/xxl-job.git</url>
-		<connection>scm:git:https://github.com/xuxueli/xxl-job.git</connection>
-		<developerConnection>scm:git:git@github.com:xuxueli/xxl-job.git</developerConnection>
-	</scm>
+<!--	<scm>-->
+<!--		<tag>master</tag>-->
+<!--		<url>https://github.com/xuxueli/xxl-job.git</url>-->
+<!--		<connection>scm:git:https://github.com/xuxueli/xxl-job.git</connection>-->
+<!--		<developerConnection>scm:git:git@github.com:xuxueli/xxl-job.git</developerConnection>-->
+<!--	</scm>-->
 	<developers>
 		<developer>
 			<id>XXL</id>
@@ -93,50 +96,61 @@
 						</executions>
 					</plugin>
 					<!-- Javadoc -->
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-javadoc-plugin</artifactId>
-						<version>${maven-javadoc-plugin.version}</version>
-						<executions>
-							<execution>
-								<phase>package</phase>
-								<goals>
-									<goal>jar</goal>
-								</goals>
-								<configuration>
-									<doclint>none</doclint>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
+<!--					<plugin>-->
+<!--						<groupId>org.apache.maven.plugins</groupId>-->
+<!--						<artifactId>maven-javadoc-plugin</artifactId>-->
+<!--						<version>${maven-javadoc-plugin.version}</version>-->
+<!--						<executions>-->
+<!--							<execution>-->
+<!--								<phase>package</phase>-->
+<!--								<goals>-->
+<!--									<goal>jar</goal>-->
+<!--								</goals>-->
+<!--								<configuration>-->
+<!--									<doclint>none</doclint>-->
+<!--								</configuration>-->
+<!--							</execution>-->
+<!--						</executions>-->
+<!--					</plugin>-->
 					<!-- GPG -->
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-gpg-plugin</artifactId>
-                        <version>${maven-gpg-plugin.version}</version>
-						<configuration>
-							<useAgent>false</useAgent>
-						</configuration>
-                        <executions>
-                            <execution>
-                                <phase>verify</phase>
-                                <goals>
-                                    <goal>sign</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
+<!--                    <plugin>-->
+<!--                        <groupId>org.apache.maven.plugins</groupId>-->
+<!--                        <artifactId>maven-gpg-plugin</artifactId>-->
+<!--                        <version>${maven-gpg-plugin.version}</version>-->
+<!--						<configuration>-->
+<!--							<useAgent>false</useAgent>-->
+<!--						</configuration>-->
+<!--                        <executions>-->
+<!--                            <execution>-->
+<!--                                <phase>verify</phase>-->
+<!--                                <goals>-->
+<!--                                    <goal>sign</goal>-->
+<!--                                </goals>-->
+<!--                            </execution>-->
+<!--                        </executions>-->
+<!--                    </plugin>-->
 				</plugins>
 			</build>
+<!--			<distributionManagement>-->
+<!--				<snapshotRepository>-->
+<!--					<id>oss</id>-->
+<!--					<url>https://oss.sonatype.org/content/repositories/snapshots/</url>-->
+<!--				</snapshotRepository>-->
+<!--				<repository>-->
+<!--					<id>oss</id>-->
+<!--					<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>-->
+<!--				</repository>-->
+<!--			</distributionManagement>-->
 			<distributionManagement>
-				<snapshotRepository>
-					<id>oss</id>
-					<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-				</snapshotRepository>
 				<repository>
-					<id>oss</id>
-					<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+					<id>dzjt-deploy-release</id>
+					<url>https://maven.visionet.cn/nexus/content/repositories/dzjt/</url>
 				</repository>
+
+				<snapshotRepository>
+					<id>dzjt-deploy-snapshot</id>
+					<url>https://maven.visionet.cn/nexus/content/repositories/dzjt/</url>
+				</snapshotRepository>
 			</distributionManagement>
 		</profile>
 	</profiles>

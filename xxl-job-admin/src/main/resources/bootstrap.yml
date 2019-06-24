@@ -1,0 +1,67 @@
+server:
+  port: 9081
+  servlet:
+    context-path: /job-admin
+spring:
+  application:
+    name: dzjt-xxl-job-admin
+  # 配置中心
+  cloud:
+    config:
+      fail-fast: true
+      name: ${spring.application.name}
+      profile: ${spring.profiles.active}
+      discovery:
+        enabled: true
+        service-id: dzjt-config-service
+  profiles:
+    active: dev
+  main:
+    allow-bean-definition-overriding: true
+  mvc:
+    static-path-pattern: /static/**
+  resources:
+    static-locations: classpath:/static/
+  freemarker:
+    template-loader-path: classpath:/templates/
+    suffix: .ftl
+    charset: UTF-8
+    request-context-attribute: request
+    settings:
+      number_format: 0.##########
+swagger:
+  config:
+    apiInfoTitle: 营运管理定时服务API
+    termsOfServiceUrl: 1234
+    apiVersion: 1.0
+
+---
+# 开发注册中心配置
+spring:
+  profiles: dev
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://dzjt:dzjt@192.168.174.186:8761/eureka/
+---
+# 测试注册中心配置
+spring:
+  profiles: test
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://dzjt:dzjt@192.168.10.5:8761/eureka/
+---
+# 生产注册中心配置
+spring:
+  profiles: prod
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://dzjt:dzjt@192.168.10.5:8761/eureka/
