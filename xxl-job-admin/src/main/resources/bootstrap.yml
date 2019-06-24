@@ -34,7 +34,10 @@ swagger:
     apiInfoTitle: 营运管理定时服务API
     termsOfServiceUrl: 1234
     apiVersion: 1.0
-
+management:
+  health:
+    mail:
+      enabled: false
 ---
 # 开发注册中心配置
 spring:
